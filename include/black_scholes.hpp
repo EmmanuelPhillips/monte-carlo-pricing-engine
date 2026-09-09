@@ -1,3 +1,4 @@
 #pragma once
 
-black_scholes();
+double black_scholes(double spot, double strike, double volatility, double rate,
+                     double expiry);
