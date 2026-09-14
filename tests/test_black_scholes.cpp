@@ -53,6 +53,7 @@ void test_longer_expiry_increases_price() {
     double current_option_price{
         black_scholes(spot, strike, volatility, rate, expiry)};
     assert(current_option_price > previous_option_price);
+    previous_option_price = current_option_price;
   }
   std::cout << "increasing expiry time test passed.\n";
 }
@@ -60,6 +61,9 @@ void test_longer_expiry_increases_price() {
 int main() {
   test_known_value();
   test_higher_volatility_increases_price();
+  test_longer_expiry_increases_price();
+
+  std::cout << "all tests passed.\n";
 
   return 0;
 }
