@@ -1,3 +1,4 @@
+#include "black_scholes.hpp"
 #include "monte_carlo.hpp"
 #include <iostream>
 
