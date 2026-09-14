@@ -1,5 +1,7 @@
 #include "black_scholes.hpp"
 #include "monte_carlo.hpp"
+#include <cmath>
+#include <format>
 #include <iostream>
 
 int main() {
@@ -10,9 +12,17 @@ int main() {
   double expiry{1.0};
   int simulations{10000};
 
-  double option_price{
+  double monte_carlo_option_price{
       monte_carlo(spot, strike, volatility, rate, expiry, simulations)};
-  std::cout << "Option price: " << option_price << '\n';
+  double black_scholes_option_price{
+      black_scholes(spot, strike, volatility, rate, expiry)};
+
+  std::cout << std::format(
+      "option price results:\nmonte carlo: {:.2f}\nblack scholes: "
+      "{:.2f}\nprice diff: "
+      "{:.2f}\n",
+      monte_carlo_option_price, black_scholes_option_price,
+      std::abs(monte_carlo_option_price - black_scholes_option_price));
 
   return 0;
 }
