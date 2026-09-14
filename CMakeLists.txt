@@ -13,3 +13,11 @@ add_executable(
 )
 
 target_include_directories(monte_carlo_pricing_engine PRIVATE include)
+
+add_executable(
+    test_black_scholes
+    tests/test_black_scholes.cpp
+    src/black_scholes.cpp
+)
+
+target_include_directories(test_black_scholes PRIVATE include)
