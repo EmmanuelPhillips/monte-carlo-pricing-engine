@@ -1,6 +1,7 @@
 #include "black_scholes.hpp"
 #include "monte_carlo.hpp"
 #include <cassert>
+#include <cmath>
 #include <iostream>
 
 void test_mc_vs_bs() {
@@ -20,7 +21,7 @@ void test_mc_vs_bs() {
 
   assert(std::abs(monte_carlo_option_price - black_scholes_option_price) <
          tolerance);
-  std::cout << "sensible estimation test passed";
+  std::cout << "sensible estimation test passed.\n";
 }
 
 int main() {
