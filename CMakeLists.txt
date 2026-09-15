@@ -21,3 +21,7 @@ add_executable(
 )
 
 target_include_directories(test_black_scholes PRIVATE include)
+
+add_executable(test_monte_carlo tests/test_monte_carlo.cpp src/monte_carlo.cpp)
+
+target_include_directories(test_monte_carlo PRIVATE include)
