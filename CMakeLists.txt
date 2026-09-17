@@ -30,3 +30,11 @@ add_executable(
 )
 
 target_include_directories(test_monte_carlo PRIVATE include)
+
+add_executable(
+    benchmark_monte_carlo
+    benchmarks/benchmark_monte_carlo.cpp
+    src/monte_carlo.cpp
+)
+
+target_include_directories(benchmark_monte_carlo PRIVATE include)
