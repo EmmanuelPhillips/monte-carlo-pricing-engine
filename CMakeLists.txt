@@ -9,6 +9,7 @@ add_executable(
     monte_carlo_pricing_engine
     app/main.cpp
     src/monte_carlo.cpp
+    src/monte_carlo_multithreaded.cpp
     src/black_scholes.cpp
 )
 
@@ -35,6 +36,7 @@ add_executable(
     benchmark_monte_carlo
     benchmarks/benchmark_monte_carlo.cpp
     src/monte_carlo.cpp
+    src/monte_carlo_multithreaded.cpp
 )
 
 target_include_directories(benchmark_monte_carlo PRIVATE include)
