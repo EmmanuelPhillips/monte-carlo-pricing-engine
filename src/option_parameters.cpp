@@ -1,0 +1,13 @@
+#include "option_parameters.hpp"
+
+OptionParameters::OptionParameters(double spot, double strike,
+                                   double volatility, double rate,
+                                   double expiry)
+    : m_spot{spot}, m_strike{strike}, m_volatility{volatility}, m_rate{rate},
+      m_expiry{expiry} {}
+
+double OptionParameters::get_spot() const { return m_spot; }
+double OptionParameters::get_strike() const { return m_strike; }
+double OptionParameters::get_volatility() const { return m_volatility; }
+double OptionParameters::get_rate() const { return m_rate; }
+double OptionParameters::get_expiry() const { return m_expiry; }
