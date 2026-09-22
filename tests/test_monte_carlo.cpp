@@ -86,7 +86,7 @@ void test_higher_strike_decreases_price() {
   parameters.set_strike(low_strike);
   double low_strike_price{monte_carlo(parameters, simulations)};
 
-  parameters.set_striek(high_strike);
+  parameters.set_strike(high_strike);
   double high_strike_price{monte_carlo(parameters, simulations)};
 
   assert(low_strike_price > high_strike_price);
