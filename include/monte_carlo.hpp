@@ -1,5 +1,4 @@
-
 #pragma once
+#include "option_parameters.hpp"
 
-double monte_carlo(double spot, double strike, double volatility, double rate,
-                   double expiry, int simulations);
+double monte_carlo(OptionParameters &parameters, int simulations);

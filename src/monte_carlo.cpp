@@ -3,11 +3,16 @@
 #include <cmath>
 #include <random>
 
-double monte_carlo(double spot, double strike, double volatility, double rate,
-                   double expiry, int simulations) {
+double monte_carlo(OptionParameters &parameters, int simulations) {
   std::random_device rd;
   std::mt19937 gen{rd()};
   std::normal_distribution<double> dist(0.0, 1.0);
+
+  double spot{parameters.get_spot()};
+  double strike{parameters.get_strike()};
+  double volatility{parameters.get_volatility()};
+  double rate{parameters.get_rate()};
+  double expiry{parameters.get_expiry()};
 
   double total_payoff{0.0};
 
