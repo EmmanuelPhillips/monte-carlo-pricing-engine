@@ -1,4 +1,11 @@
 #pragma once
 #include "option_parameters.hpp"
 
-double monte_carlo(OptionParameters &parameters, int simulations);
+class MonteCarloPricer {
+private:
+  OptionParameters m_parameters;
+  int m_simulations;
+
+public:
+  double price();
+};
