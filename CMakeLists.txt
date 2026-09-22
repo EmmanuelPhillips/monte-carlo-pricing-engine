@@ -11,6 +11,7 @@ add_executable(
     src/monte_carlo.cpp
     src/monte_carlo_multithreaded.cpp
     src/black_scholes.cpp
+    src/option_parameters.cpp
 )
 
 target_include_directories(monte_carlo_pricing_engine PRIVATE include)
@@ -19,6 +20,7 @@ add_executable(
     test_black_scholes
     tests/test_black_scholes.cpp
     src/black_scholes.cpp
+    src/option_parameters.cpp
 )
 
 target_include_directories(test_black_scholes PRIVATE include)
@@ -28,6 +30,7 @@ add_executable(
     tests/test_monte_carlo.cpp
     src/monte_carlo.cpp
     src/black_scholes.cpp
+    src/option_parameters.cpp
 )
 
 target_include_directories(test_monte_carlo PRIVATE include)
@@ -37,6 +40,7 @@ add_executable(
     benchmarks/benchmark_monte_carlo.cpp
     src/monte_carlo.cpp
     src/monte_carlo_multithreaded.cpp
+    src/option_parameters.cpp
 )
 
 target_include_directories(benchmark_monte_carlo PRIVATE include)
