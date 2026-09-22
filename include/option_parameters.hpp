@@ -20,4 +20,6 @@ public:
 
   void set_volatility(double volatility);
   void set_expiry(double expiry);
+  void set_spot(double spot);
+  void set_strike(double strike);
 };

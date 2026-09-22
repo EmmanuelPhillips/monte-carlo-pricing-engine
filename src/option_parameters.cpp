@@ -16,3 +16,5 @@ void OptionParameters::set_volatility(double volatility) {
   m_volatility = volatility;
 }
 void OptionParameters::set_expiry(double expiry) { m_expiry = expiry; }
+void OptionParameters::set_spot(double spot) { m_spot = spot; }
+void OptionParameters::set_strike(double strike) { m_strike = strike; }
