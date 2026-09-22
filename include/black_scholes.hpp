@@ -1,4 +1,11 @@
 #pragma once
 #include "option_parameters.hpp"
 
-double black_scholes(const OptionParameters &parameters);
+class BlackScholesPricer {
+private:
+  OptionParameters m_parameters;
+
+public:
+  BlackScholesPricer(const OptionParameters &parameters);
+  double price();
+};

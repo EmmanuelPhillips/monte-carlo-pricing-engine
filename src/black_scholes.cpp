@@ -5,12 +5,15 @@ namespace {
 double N(double x) { return 0.5 * std::erfc(-x / std::sqrt(2.0)); }
 } // namespace
 
-double black_scholes(const OptionParameters &parameters) {
-  double spot{parameters.get_spot()};
-  double strike{parameters.get_strike()};
-  double volatility{parameters.get_volatility()};
-  double rate{parameters.get_rate()};
-  double expiry{parameters.get_expiry()};
+BlackScholesPricer::BlackScholesPricer(OptionParameters &parameters)
+    : m_parameters{parameters} {}
+
+double BlackScholesPricer::price() {
+  double spot{m_parameters.get_spot()};
+  double strike{m_parameters.get_strike()};
+  double volatility{m_parameters.get_volatility()};
+  double rate{m_parameters.get_rate()};
+  double expiry{m_parameters.get_expiry()};
 
   double d_1{(std::log(spot / strike) +
               (rate + (0.5 * volatility * volatility)) * expiry) /
