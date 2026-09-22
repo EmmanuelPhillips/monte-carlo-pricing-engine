@@ -7,5 +7,6 @@ private:
   int m_simulations;
 
 public:
+  MonteCarloPricer(const OptionParameters &parameters);
   double price();
 };
