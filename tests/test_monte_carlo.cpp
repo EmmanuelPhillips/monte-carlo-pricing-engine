@@ -12,8 +12,7 @@ void test_mc_vs_bs() {
   constexpr double black_scholes_option_price{10.4506};
   constexpr double tolerance{0.1};
 
-  double monte_carlo_option_price{
-      monte_carlo(spot, strike, volatility, rate, expiry, simulations)};
+  double monte_carlo_option_price{monte_carlo(parameters, simulations)};
 
   assert(std::abs(monte_carlo_option_price - black_scholes_option_price) <
          tolerance);
