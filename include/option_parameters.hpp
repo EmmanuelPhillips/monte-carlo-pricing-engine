@@ -17,4 +17,7 @@ public:
   double get_volatility() const;
   double get_rate() const;
   double get_expiry() const;
+
+  void set_volatility(double volatility);
+  void set_expiry(double expiry);
 };

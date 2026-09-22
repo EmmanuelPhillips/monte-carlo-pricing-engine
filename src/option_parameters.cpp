@@ -11,3 +11,8 @@ double OptionParameters::get_strike() const { return m_strike; }
 double OptionParameters::get_volatility() const { return m_volatility; }
 double OptionParameters::get_rate() const { return m_rate; }
 double OptionParameters::get_expiry() const { return m_expiry; }
+
+void OptionParameters::set_volatility(double volatility) {
+  m_volatility = volatility;
+}
+void OptionParameters::set_expiry(double expiry) { m_expiry = expiry; }
