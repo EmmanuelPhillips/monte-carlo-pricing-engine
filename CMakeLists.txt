@@ -9,7 +9,6 @@ add_executable(
     monte_carlo_pricing_engine
     app/main.cpp
     src/monte_carlo.cpp
-    src/monte_carlo_multithreaded.cpp
     src/black_scholes.cpp
     src/option_parameters.cpp
 )
@@ -39,7 +38,6 @@ add_executable(
     benchmark_monte_carlo
     benchmarks/benchmark_monte_carlo.cpp
     src/monte_carlo.cpp
-    src/monte_carlo_multithreaded.cpp
     src/option_parameters.cpp
 )
 
