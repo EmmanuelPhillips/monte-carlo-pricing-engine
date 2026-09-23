@@ -12,7 +12,8 @@ void test_mc_vs_bs() {
   constexpr double black_scholes_option_price{10.4506};
   constexpr double tolerance{0.1};
 
-  double monte_carlo_option_price{monte_carlo(parameters, simulations)};
+  MonteCarloPricer pricer{parameters, simulations};
+  double monte_carlo_option_price{pricer.price()};
 
   assert(std::abs(monte_carlo_option_price - black_scholes_option_price) <
          tolerance);
@@ -25,14 +26,15 @@ void test_higher_volatility_increases_price() {
 
   constexpr double low_volatility{0.1};
   constexpr double high_volatility{0.3};
-
-  constexpr int simulations{1000000};
+  constexpr int simulations{1'000'000};
 
   parameters.set_volatility(low_volatility);
-  double low_volatility_price{monte_carlo(parameters, simulations)};
+  MonteCarloPricer low_volatility_pricer{parameters, simulations};
+  double low_volatility_price{low_volatility_pricer.price()};
 
   parameters.set_volatility(high_volatility);
-  double high_volatility_price{monte_carlo(parameters, simulations)};
+  MonteCarloPricer high_volatility_pricer{parameters, simulations};
+  double high_volatility_price{high_volatility_pricer.price()};
 
   assert(high_volatility_price > low_volatility_price);
 
@@ -41,16 +43,18 @@ void test_higher_volatility_increases_price() {
 
 void test_longer_expiry_increases_price() {
   OptionParameters parameters{100.0, 100.0, 0.2, 0.05, 1.0};
-  constexpr int simulations{1000000};
+  constexpr int simulations{1'000'000};
 
   constexpr double short_expiry{1.0};
   constexpr double long_expiry{2.0};
 
   parameters.set_expiry(short_expiry);
-  double short_expiry_price{monte_carlo(parameters, simulations)};
+  MonteCarloPricer short_expiry_pricer{parameters, simulations};
+  double short_expiry_price{short_expiry_pricer.price()};
 
   parameters.set_expiry(long_expiry);
-  double long_expiry_price{monte_carlo(parameters, simulations)};
+  MonteCarloPricer long_expiry_pricer{parameters, simulations};
+  double long_expiry_price{long_expiry_pricer.price()};
 
   assert(long_expiry_price > short_expiry_price);
 
@@ -65,10 +69,12 @@ void test_higher_spot_increases_price() {
   constexpr double high_spot{120.0};
 
   parameters.set_spot(low_spot);
-  double low_spot_price{monte_carlo(parameters, simulations)};
+  MonteCarloPricer low_spot_pricer{parameters, simulations};
+  double low_spot_price{low_spot_pricer.price()};
 
   parameters.set_spot(high_spot);
-  double high_spot_price{monte_carlo(parameters, simulations)};
+  MonteCarloPricer high_spot_pricer{parameters, simulations};
+  double high_spot_price{high_spot_pricer.price()};
 
   assert(high_spot_price > low_spot_price);
 
@@ -77,16 +83,18 @@ void test_higher_spot_increases_price() {
 
 void test_higher_strike_decreases_price() {
   OptionParameters parameters{100.0, 100.0, 0.2, 0.05, 1.0};
-  constexpr int simulations{1000000};
+  constexpr int simulations{1'000'000};
 
   constexpr double low_strike{80.0};
   constexpr double high_strike{120.0};
 
   parameters.set_strike(low_strike);
-  double low_strike_price{monte_carlo(parameters, simulations)};
+  MonteCarloPricer low_strike_pricer{parameters, simulations};
+  double low_strike_price{low_strike_pricer.price()};
 
   parameters.set_strike(high_strike);
-  double high_strike_price{monte_carlo(parameters, simulations)};
+  MonteCarloPricer high_strike_pricer{parameters, simulations};
+  double high_strike_price{high_strike_pricer.price()};
 
   assert(low_strike_price > high_strike_price);
 
@@ -97,9 +105,11 @@ void test_zero_volatility() {
   OptionParameters parameters{100.0, 100.0, 0.0, 0.05, 1.0};
   constexpr int simulations{10'000};
 
-  double monte_carlo_option_price{monte_carlo(parameters, simulations)};
+  MonteCarloPricer mc_pricer{parameters, simulations};
+  double monte_carlo_option_price{mc_pricer.price()};
 
-  double black_scholes_option_price{black_scholes(parameters)};
+  BlackScholesPricer bs_pricer{parameters};
+  double black_scholes_option_price{bs_pricer.price()};
 
   constexpr double tolerance{1e-10};
 

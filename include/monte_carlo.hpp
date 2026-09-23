@@ -7,6 +7,7 @@ private:
   int m_simulations;
 
 public:
-  MonteCarloPricer(const OptionParameters &parameters);
+  MonteCarloPricer(const OptionParameters &parameters, int simulations);
   double price();
+  double multithreaded_price();
 };

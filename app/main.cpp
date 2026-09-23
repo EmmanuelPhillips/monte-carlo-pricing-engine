@@ -116,8 +116,8 @@ int main() {
       double rate{};
       double expiry{};
 
-      OptionParameters parameters{
-          get_option_inputs(spot, strike, volatility, rate, expiry)};
+      get_option_inputs(spot, strike, volatility, rate, expiry);
+      OptionParameters parameters{spot, strike, volatility, rate, expiry};
 
       int simulations{get_positive_int("Number of simulations")};
 
@@ -136,8 +136,8 @@ int main() {
       double rate{};
       double expiry{};
 
-      OptionParameters parameters{
-          get_option_inputs(spot, strike, volatility, rate, expiry)};
+      get_option_inputs(spot, strike, volatility, rate, expiry);
+      OptionParameters parameters{spot, strike, volatility, rate, expiry};
 
       BlackScholesPricer pricer{parameters};
       double result{pricer.price()};
@@ -154,8 +154,8 @@ int main() {
       double rate{};
       double expiry{};
 
-      OptionParameters parameters{
-          get_option_inputs(spot, strike, volatility, rate, expiry)};
+      get_option_inputs(spot, strike, volatility, rate, expiry);
+      OptionParameters parameters{spot, strike, volatility, rate, expiry};
 
       int simulations{get_positive_int("Number of simulations")};
 
