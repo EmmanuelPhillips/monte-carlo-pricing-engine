@@ -42,3 +42,13 @@ add_executable(
 )
 
 target_include_directories(benchmark_monte_carlo PRIVATE include)
+
+add_executable(
+    generate_pricing_data
+    experiments/generate_pricing_data.cpp
+    src/monte_carlo.cpp
+    src/black_scholes.cpp
+    src/option_parameters.cpp
+)
+
+target_include_directories(generate_pricing_data PRIVATE include)
