@@ -85,7 +85,7 @@ double MonteCarloPricer::multithreaded_price() {
                      : chunk};
     threads.emplace_back([&, i, num_sims] {
       partial_payoffs[i] = calculate_partial_payoff(
-          spot, strike, volatility, drift, sqrt_expiry, m_simulations);
+          spot, strike, volatility, drift, sqrt_expiry, num_sims);
     });
   }
 
