@@ -1,5 +1,6 @@
 #include "black_scholes.hpp"
 #include "monte_carlo.hpp"
+#include "option_parameters.hpp"
 #include <cmath>
 #include <cstdlib>
 #include <iostream>
@@ -115,12 +116,13 @@ int main() {
       double rate{};
       double expiry{};
 
-      get_option_inputs(spot, strike, volatility, rate, expiry);
+      OptionParameters parameters{
+          get_option_inputs(spot, strike, volatility, rate, expiry)};
 
       int simulations{get_positive_int("Number of simulations")};
 
-      double result{
-          monte_carlo(spot, strike, volatility, rate, expiry, simulations)};
+      MonteCarloPricer pricer{parameters, simulations};
+      double result{pricer.price()};
 
       std::cout << "\nMonte Carlo price: " << result << '\n';
 
@@ -134,9 +136,11 @@ int main() {
       double rate{};
       double expiry{};
 
-      get_option_inputs(spot, strike, volatility, rate, expiry);
+      OptionParameters parameters{
+          get_option_inputs(spot, strike, volatility, rate, expiry)};
 
-      double result{black_scholes(spot, strike, volatility, rate, expiry)};
+      BlackScholesPricer pricer{parameters};
+      double result{pricer.price()};
 
       std::cout << "\nBlack-Scholes price: " << result << '\n';
 
@@ -150,14 +154,16 @@ int main() {
       double rate{};
       double expiry{};
 
-      get_option_inputs(spot, strike, volatility, rate, expiry);
+      OptionParameters parameters{
+          get_option_inputs(spot, strike, volatility, rate, expiry)};
 
       int simulations{get_positive_int("Number of simulations")};
 
-      double mc_result{
-          monte_carlo(spot, strike, volatility, rate, expiry, simulations)};
+      MonteCarloPricer mc_pricer{parameters, simulations};
+      double mc_result{mc_pricer.price()};
 
-      double bs_result{black_scholes(spot, strike, volatility, rate, expiry)};
+      BlackScholesPricer bs_pricer{parameters};
+      double bs_result{bs_pricer.price()};
 
       double difference{std::abs(mc_result - bs_result)};
 
