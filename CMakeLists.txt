@@ -62,3 +62,19 @@ add_executable(
 )
 
 target_include_directories(generate_convergence_data PRIVATE include)
+
+set(CMAKE_AUTOMOC ON)
+find_package(Qt6 REQUIRED COMPONENTS Widgets)
+
+add_executable(
+    monte_carlo_gui
+    app/gui_main.cpp
+    src/gui.cpp
+    include/gui.hpp
+    src/monte_carlo.cpp
+    src/black_scholes.cpp
+    src/option_parameters.cpp
+)
+
+target_include_directories(monte_carlo_gui PRIVATE include)
+target_link_libraries(monte_carlo_gui PRIVATE Qt6::Widgets)
