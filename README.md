@@ -42,17 +42,36 @@ price and is used as a benchmark for evaluating the Monte Carlo implementation.
 
 ```text
 .
-├── app/
-├── benchmarks/
-├── data/
-├── experiments/
-├── include/
-├── python/
-├── src/
-├── tests/
+├── app
+│   ├── gui_main.cpp
+│   └── main.cpp
+├── benchmarks
+│   ├── benchmark_black_scholes.cpp
+│   └── benchmark_monte_carlo.cpp
 ├── CMakeLists.txt
+├── data
+│   ├── monte_carlo_convergence.csv
+│   └── monte_carlo_results.csv
+├── eda_observations.md
+├── experiments
+│   ├── generate_convergence_data.cpp
+│   └── generate_pricing_data.cpp
+├── include
+│   ├── black_scholes.hpp
+│   ├── gui.hpp
+│   ├── monte_carlo.hpp
+│   └── option_parameters.hpp
+├── python
+│   └── eda.py
 ├── README.md
-└── eda_observations.md
+├── src
+│   ├── black_scholes.cpp
+│   ├── gui.cpp
+│   ├── monte_carlo.cpp
+│   └── option_parameters.cpp
+└── tests
+    ├── test_black_scholes.cpp
+    └── test_monte_carlo.cpp
 ```
 
 ## Results
