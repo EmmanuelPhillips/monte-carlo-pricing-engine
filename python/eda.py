@@ -122,7 +122,27 @@ plt.tight_layout()
 ###################################################################
 # Monte Carlo convergence
 ###################################################################
+filepath = r"data/monte_carlo_convergence.csv"
+df_convergence = pd.read_csv(filepath)
+df_convergence["abs_error"] = (
+    df_convergence["price"] - df_convergence["bs_price"]
+).abs()
 
+plt.figure()
+plt.scatter(df_convergence["num_sims"], df_convergence["abs_error"])
+plt.xscale("log")
+
+convergence_summary = df_convergence.groupby("num_sims").agg(
+    mean_price=("price", "mean"),
+    std_price=("price", "std"),
+    mean_abs_error=("abs_error", "mean"),
+)
+print("CONVERGENCE SUMMARY")
+print(convergence_summary)
+
+d = {key: data.values for key, data in df_convergence.groupby("num_sims")["abs_error"]}
+plt.figure()
+plt.boxplot(list(d.values()), tick_labels=list(d.keys()))
 ###################################################################
 
 plt.show()
