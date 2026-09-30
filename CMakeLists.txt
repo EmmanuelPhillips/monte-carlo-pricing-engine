@@ -52,3 +52,13 @@ add_executable(
 )
 
 target_include_directories(generate_pricing_data PRIVATE include)
+
+add_executable(
+    generate_convergence_data
+    experiments/generate_convergence_data.cpp
+    src/monte_carlo.cpp
+    src/black_scholes.cpp
+    src/option_parameters.cpp
+)
+
+target_include_directories(generate_convergence_data PRIVATE include)
